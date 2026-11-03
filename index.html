@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A personal National Pokédex collection tracker that works on GitHub Pages."
+    />
+    <meta name="theme-color" content="#101827" />
+    <title>National Pokédex Tracker</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./vendor/exceljs.min.js"></script>
+    <script defer src="./app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#tracker" aria-label="National Pokédex home">
+        <span class="brand-mark" aria-hidden="true">ND</span>
+        <span>National Dex</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#tracker" data-route="tracker">Pokédex</a>
+        <a href="#stats" data-route="stats">Stats</a>
+        <a href="#sorter" data-route="sorter">Sorter</a>
+        <a href="#import-export" data-route="import-export">Import / Export</a>
+      </nav>
+      <span class="offline-indicator"><span></span> Your local copy</span>
+    </header>
+
+    <main class="page-shell">
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div id="app" aria-live="polite">
+        <section class="loading-panel">
+          <div class="loading-dot"></div>
+          <p>Loading your Pokédex…</p>
+        </section>
+      </div>
+      <footer class="footer">
+        <span>National Pokédex Binder Tracker</span>
+        <span>Changes are saved in this browser.</span>
+      </footer>
+    </main>
+  </body>
+</html>
